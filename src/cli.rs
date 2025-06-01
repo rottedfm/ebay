@@ -1,31 +1,23 @@
 use clap::{Parser, Subcommand};
 
 #[derive(Parser)]
-#[command(version, about = 
-r#"          
-          $$\                           
-          $$ |                          
- $$$$$$\  $$$$$$$\   $$$$$$\  $$\   $$\ 
-$$  __$$\ $$  __$$\  \____$$\ $$ |  $$ |
-$$$$$$$$ |$$ |  $$ | $$$$$$$ |$$ |  $$ |
-$$   ____|$$ |  $$ |$$  __$$ |$$ |  $$ |
-\$$$$$$$\ $$$$$$$  |\$$$$$$$ |\$$$$$$$ |
- \_______|\_______/  \_______| \____$$ |
-                              $$\   $$ |
-                              \$$$$$$  |
-                               \______/ "#, long_about = None)]
+#[command(name = "ebay")]
+#[command(about = "eBay bot manager")]
 pub struct Cli {
-  #[command(subcommand)]
-  pub command: Option<Commands>,
+    #[command(subcommand)]
+    pub command: Commands,
 }
 
 #[derive(Subcommand)]
 pub enum Commands {
-  /// Runs invertory query or scraper.
-  Inventory {
-    /// Scrapes ebay listings and stores the data in an sqlite database
-    #[arg(short, long)]
-    scrape: bool, 
-  }
-
+    /// Login to eBay and save cookies till they expire
+    Login,
+    /// Scrape and save montly profit in a loop for led matrix
+    Profit,
+    /// Send offers at set percentage
+    Offer { percentage: f32 },
+    /// Scrape inventory data
+    Inventory,
+    /// Scrape and save to DB
+    Sync,
 }

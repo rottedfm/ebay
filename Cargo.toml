@@ -1,11 +1,19 @@
 [package]
-name = "ebay"
+name = "eBay"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-clap = { version = "4.5.38", features = ["derive"] }
+base64 = "0.22.1"
+chrono = "0.4.41"
+clap = { version = "4.5.39", features = ["derive"] }
+derive = "1.0.0"
 env_logger = "0.11.8"
 fantoccini = "0.21.5"
+features = "0.10.0"
 log = "0.4.27"
+reqwest = { version = "0.12.18", features = ["json"] }
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.140"
 tokio = { version = "1.45.1", features = ["full"] }
+toml = "0.8.22"
