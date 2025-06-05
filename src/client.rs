@@ -4,8 +4,9 @@ use fantoccini::{Client as FantocciniClient, ClientBuilder, Locator, elements::E
 use log::{debug, error, info};
 use serde::{Deserialize, Serialize};
 use serde_json::json;
+use std::collections::HashSet;
+use std::fs;
 use std::process::{Child, Command, Stdio};
-use std::{fs, time::Duration};
 use tempfile::TempDir;
 use tokio::time::sleep;
 
@@ -41,7 +42,7 @@ impl BrowserClient {
             .spawn()
             .context("Failed to spawn geckodriver process")?;
 
-        sleep(Duration::from_secs(2)).await;
+        sleep(tokio::time::Duration::from_secs(2)).await;
 
         info!("Connecting to Fantoccini WebDriver...");
         let client = ClientBuilder::native()
@@ -80,6 +81,126 @@ user_pref("useAutomationExtension", false);
     pub async fn goto(&mut self, url: &str) -> Result<()> {
         info!("Navigating to: {url}");
         self.client.goto(url).await.context("Failed to navigate")?;
+        Ok(())
+    }
+
+    pub async fn send_discount_offers(&mut self, percent: f32) -> Result<()> {
+        let main_url = "https://www.ebay.com/mys/overview";
+        let mut offers_sent = 0;
+
+        loop {
+            // Always return to eBay overview to refresh the DOM
+            self.goto(main_url)
+                .await
+                .context("Failed to navigate to eBay overview")?;
+            tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
+
+            // Try to find the first "Send Offer" button
+            let offer_button = match self
+                .client
+                .wait()
+                .for_element(fantoccini::Locator::Css(
+                    ".transactions-line-actions button.me-fake-button.btn--primary",
+                ))
+                .await
+            {
+                Ok(button) => button,
+                Err(_) => {
+                    println!("✅ No more Send Offer buttons found — all offers sent.");
+                    break;
+                }
+            };
+
+            // Click it
+            offer_button
+                .click()
+                .await
+                .context("Failed to click offer button")?;
+            tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
+
+            // Extract price
+            let price_text = self
+                .client
+                .wait()
+                .for_element(fantoccini::Locator::Css(".item-price .bold"))
+                .await?
+                .text()
+                .await
+                .unwrap_or_default();
+
+            let cleaned_price = price_text
+                .split_whitespace()
+                .next()
+                .unwrap_or("")
+                .trim_start_matches('$')
+                .replace(",", "");
+
+            let original_price: f32 = cleaned_price.parse().unwrap_or(0.0);
+            if original_price == 0.0 {
+                println!("⚠️ Invalid price format: {}", price_text);
+                continue;
+            }
+
+            let discount_multiplier = 1.0 - (percent / 100.0);
+            let offer_price = (original_price * discount_multiplier * 100.0).round() / 100.0;
+
+            // Enter offer price
+            let input = self
+                .client
+                .wait()
+                .for_element(fantoccini::Locator::Css("#app-sio__offer-section__price"))
+                .await
+                .context("Failed to find offer input field")?;
+
+            input.clear().await.ok();
+            input
+                .send_keys(&format!("{:.2}", offer_price))
+                .await
+                .context("Failed to enter offer price")?;
+
+            // Click Review
+            let review_selector = ".sio-button-PRIMARY";
+            let review_button = self
+                .client
+                .wait()
+                .for_element(fantoccini::Locator::Css(review_selector))
+                .await
+                .context("Review offer button not found")?;
+
+            self.scroll_to_element(review_selector).await?;
+            review_button
+                .click()
+                .await
+                .context("Failed to click review button")?;
+
+            tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
+
+            // Click Submit
+            let submit_button = self
+                .client
+                .wait()
+                .for_element(fantoccini::Locator::Css(review_selector))
+                .await
+                .context("Submit offer button not found")?;
+
+            self.scroll_to_element(review_selector).await?;
+            tokio::time::sleep(tokio::time::Duration::from_millis(300)).await;
+
+            submit_button
+                .click()
+                .await
+                .context("Failed to click submit offer button")?;
+
+            println!(
+                "✅ Sent offer: ${:.2} (original: ${:.2})",
+                offer_price, original_price
+            );
+            offers_sent += 1;
+
+            tokio::time::sleep(tokio::time::Duration::from_secs(3)).await;
+        }
+
+        println!("🎉 Done. Offers submitted: {}", offers_sent);
         Ok(())
     }
 
@@ -211,8 +332,9 @@ user_pref("useAutomationExtension", false);
             .context("Failed to find listing elements")?;
 
         let mut listings = Vec::new();
+        let mut seen_ids = HashSet::new();
 
-        for (_i, item) in items.into_iter().enumerate() {
+        for item in items {
             let title = item
                 .find(Locator::Css("h3.item-title span"))
                 .await
@@ -229,6 +351,12 @@ user_pref("useAutomationExtension", false);
                 .await
                 .unwrap_or_else(|_| "<missing item ID>".into())
                 .replace("Item ID: ", "");
+
+            // Skip duplicates
+            if seen_ids.contains(&item_id) {
+                continue;
+            }
+            seen_ids.insert(item_id.clone());
 
             let price = item
                 .find(Locator::Css(".item__price span.bold"))
@@ -265,25 +393,27 @@ user_pref("useAutomationExtension", false);
                 views,
                 watchers,
             });
+        }
 
-            for (i, listing) in listings.iter().enumerate() {
-                info!("Listing {} raw: {:?}", i + 1, listing);
+        // Sort by item_id to ensure stable order
+        listings.sort_by(|a, b| a.item_id.cmp(&b.item_id));
 
-                println!("----------------------------------------");
-                println!("📦 Listing #{}", i + 1);
-                println!("📝 Title   : {}", listing.title);
-                println!("🆔 Item ID : {}", listing.item_id);
-                println!("💲 Price   : {}", listing.price);
-                println!("👀 Views   : {}", listing.views);
-                println!("⭐ Watchers: {}", listing.watchers);
-            }
+        for (i, listing) in listings.iter().enumerate() {
+            info!("Listing {} raw: {:?}", i + 1, listing);
+
+            println!("----------------------------------------");
+            println!("📦 Listing #{}", i + 1);
+            println!("📝 Title   : {}", listing.title);
+            println!("🆔 Item ID : {}", listing.item_id);
+            println!("💲 Price   : {}", listing.price);
+            println!("👀 Views   : {}", listing.views);
+            println!("⭐ Watchers: {}", listing.watchers);
         }
 
         write_listings_to_csv(&listings, "output/listings.csv")?;
 
         Ok(listings)
     }
-
     pub async fn quit(mut self) -> Result<()> {
         info!("Shutting down browser and geckodriver...");
         if let Err(e) = self.client.close().await {

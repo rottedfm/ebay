@@ -64,7 +64,7 @@ async fn main() -> anyhow::Result<()> {
                 .await
                 .context("Failed to close browser session")?;
         }
-        Commands::Profit => {
+        Commands::Counter => {
             println!("📈 Starting profit updater...");
             info!("Starting profit updater...");
 
@@ -111,12 +111,49 @@ async fn main() -> anyhow::Result<()> {
         }
         Commands::Offer { percentage } => {
             info!("Offering customers {}% off...", percentage);
-            // TODO: Offer a set percentage off to customers
+
+            let mut browser = BrowserClient::new()
+                .await
+                .context("Failed to start browser client")?;
+
+            browser
+                .goto("https://signin.ebay.com/")
+                .await
+                .context("Failed to navigate to eBay login page")?;
+
+            browser
+                .wait_if_captcha_detected()
+                .await
+                .context("Failed to wait for captcha")?;
+
+            browser
+                .email_submit("rottedfm@proton.me")
+                .await
+                .context("Failed to submit email")?;
+
+            browser
+                .password_submit("mqh8y~?+g{fpQl7S")
+                .await
+                .context("Failed to submit password")?;
+
+            browser
+                .goto("https://www.ebay.com/mys/overview")
+                .await
+                .context("Failed to reach overview")?;
+
+            browser
+                .send_discount_offers(*percentage)
+                .await
+                .context("Failed to send discount offers")?;
+
+            browser
+                .quit()
+                .await
+                .context("Failed to close browser session")?;
         }
     }
     Ok(())
 }
-
 fn setup_logger() -> anyhow::Result<()> {
     let log_dir = Path::new("logs");
     create_dir_all(log_dir)?;
