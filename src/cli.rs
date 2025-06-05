@@ -10,14 +10,10 @@ pub struct Cli {
 
 #[derive(Subcommand)]
 pub enum Commands {
-    /// Login to eBay and save cookies till they expire
-    Login,
     /// Scrape and save montly profit in a loop for led matrix
     Profit,
     /// Send offers at set percentage
     Offer { percentage: f32 },
     /// Scrape inventory data
     Inventory,
-    /// Scrape and save to DB
-    Sync,
 }

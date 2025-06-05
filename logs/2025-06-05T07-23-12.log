@@ -1,0 +1,100 @@
+[INFO] eBay - Starting login...
+[INFO] eBay::client - Starting geckodriver with custom Firefox profile...
+[INFO] eBay::client - Connecting to Fantoccini WebDriver...
+[INFO] eBay::client - BrowserClient initialized.
+[INFO] eBay::client - Navigating to: https://signin.ebay.com/
+[INFO] eBay::client - Typing email into selector: #userid...
+[INFO] eBay::client - Typing password into selector: #userid...
+[INFO] eBay::client - Navigating to: https://www.ebay.com/mys/active
+[INFO] eBay::client - Listing 1 raw: Listing { title: "Anker PowerCore Select 20000 mAh Power Bank Dual USB Fast Portable Charger", item_id: "335972175128", price: "$25.00", views: "63", watchers: "2" }
+[INFO] eBay::client - Listing 1 raw: Listing { title: "Anker PowerCore Select 20000 mAh Power Bank Dual USB Fast Portable Charger", item_id: "335972175128", price: "$25.00", views: "63", watchers: "2" }
+[INFO] eBay::client - Listing 2 raw: Listing { title: "Vintage Bell & Howell Slide Cube 1000 Projector Orig Box", item_id: "335971199792", price: "$50.00", views: "51", watchers: "1" }
+[INFO] eBay::client - Listing 1 raw: Listing { title: "Anker PowerCore Select 20000 mAh Power Bank Dual USB Fast Portable Charger", item_id: "335972175128", price: "$25.00", views: "63", watchers: "2" }
+[INFO] eBay::client - Listing 2 raw: Listing { title: "Vintage Bell & Howell Slide Cube 1000 Projector Orig Box", item_id: "335971199792", price: "$50.00", views: "51", watchers: "1" }
+[INFO] eBay::client - Listing 3 raw: Listing { title: "Dell Monitor", item_id: "335971180687", price: "$50.00", views: "27", watchers: "0" }
+[INFO] eBay::client - Listing 1 raw: Listing { title: "Anker PowerCore Select 20000 mAh Power Bank Dual USB Fast Portable Charger", item_id: "335972175128", price: "$25.00", views: "63", watchers: "2" }
+[INFO] eBay::client - Listing 2 raw: Listing { title: "Vintage Bell & Howell Slide Cube 1000 Projector Orig Box", item_id: "335971199792", price: "$50.00", views: "51", watchers: "1" }
+[INFO] eBay::client - Listing 3 raw: Listing { title: "Dell Monitor", item_id: "335971180687", price: "$50.00", views: "27", watchers: "0" }
+[INFO] eBay::client - Listing 4 raw: Listing { title: "Vintage Royal Quiet De Luxe Typewriter 1950s With Case Comes With Ribbon", item_id: "335971152588", price: "$75.00", views: "80", watchers: "0" }
+[INFO] eBay::client - Listing 1 raw: Listing { title: "Anker PowerCore Select 20000 mAh Power Bank Dual USB Fast Portable Charger", item_id: "335972175128", price: "$25.00", views: "63", watchers: "2" }
+[INFO] eBay::client - Listing 2 raw: Listing { title: "Vintage Bell & Howell Slide Cube 1000 Projector Orig Box", item_id: "335971199792", price: "$50.00", views: "51", watchers: "1" }
+[INFO] eBay::client - Listing 3 raw: Listing { title: "Dell Monitor", item_id: "335971180687", price: "$50.00", views: "27", watchers: "0" }
+[INFO] eBay::client - Listing 4 raw: Listing { title: "Vintage Royal Quiet De Luxe Typewriter 1950s With Case Comes With Ribbon", item_id: "335971152588", price: "$75.00", views: "80", watchers: "0" }
+[INFO] eBay::client - Listing 5 raw: Listing { title: "Vintage Realistic 42-2105 Tape Control Center for up 3 Deck", item_id: "335971133488", price: "$40.00", views: "41", watchers: "3" }
+[INFO] eBay::client - Listing 1 raw: Listing { title: "Anker PowerCore Select 20000 mAh Power Bank Dual USB Fast Portable Charger", item_id: "335972175128", price: "$25.00", views: "63", watchers: "2" }
+[INFO] eBay::client - Listing 2 raw: Listing { title: "Vintage Bell & Howell Slide Cube 1000 Projector Orig Box", item_id: "335971199792", price: "$50.00", views: "51", watchers: "1" }
+[INFO] eBay::client - Listing 3 raw: Listing { title: "Dell Monitor", item_id: "335971180687", price: "$50.00", views: "27", watchers: "0" }
+[INFO] eBay::client - Listing 4 raw: Listing { title: "Vintage Royal Quiet De Luxe Typewriter 1950s With Case Comes With Ribbon", item_id: "335971152588", price: "$75.00", views: "80", watchers: "0" }
+[INFO] eBay::client - Listing 5 raw: Listing { title: "Vintage Realistic 42-2105 Tape Control Center for up 3 Deck", item_id: "335971133488", price: "$40.00", views: "41", watchers: "3" }
+[INFO] eBay::client - Listing 6 raw: Listing { title: "Tim McGraw JBL On-ear Headphones", item_id: "335971104535", price: "$40.00", views: "9", watchers: "0" }
+[INFO] eBay::client - Listing 1 raw: Listing { title: "Anker PowerCore Select 20000 mAh Power Bank Dual USB Fast Portable Charger", item_id: "335972175128", price: "$25.00", views: "63", watchers: "2" }
+[INFO] eBay::client - Listing 2 raw: Listing { title: "Vintage Bell & Howell Slide Cube 1000 Projector Orig Box", item_id: "335971199792", price: "$50.00", views: "51", watchers: "1" }
+[INFO] eBay::client - Listing 3 raw: Listing { title: "Dell Monitor", item_id: "335971180687", price: "$50.00", views: "27", watchers: "0" }
+[INFO] eBay::client - Listing 4 raw: Listing { title: "Vintage Royal Quiet De Luxe Typewriter 1950s With Case Comes With Ribbon", item_id: "335971152588", price: "$75.00", views: "80", watchers: "0" }
+[INFO] eBay::client - Listing 5 raw: Listing { title: "Vintage Realistic 42-2105 Tape Control Center for up 3 Deck", item_id: "335971133488", price: "$40.00", views: "41", watchers: "3" }
+[INFO] eBay::client - Listing 6 raw: Listing { title: "Tim McGraw JBL On-ear Headphones", item_id: "335971104535", price: "$40.00", views: "9", watchers: "0" }
+[INFO] eBay::client - Listing 7 raw: Listing { title: "Kodak Carousel 760H Slide Projector w/Remote And Accessories", item_id: "335966644745", price: "$200.00", views: "43", watchers: "2" }
+[INFO] eBay::client - Listing 1 raw: Listing { title: "Anker PowerCore Select 20000 mAh Power Bank Dual USB Fast Portable Charger", item_id: "335972175128", price: "$25.00", views: "63", watchers: "2" }
+[INFO] eBay::client - Listing 2 raw: Listing { title: "Vintage Bell & Howell Slide Cube 1000 Projector Orig Box", item_id: "335971199792", price: "$50.00", views: "51", watchers: "1" }
+[INFO] eBay::client - Listing 3 raw: Listing { title: "Dell Monitor", item_id: "335971180687", price: "$50.00", views: "27", watchers: "0" }
+[INFO] eBay::client - Listing 4 raw: Listing { title: "Vintage Royal Quiet De Luxe Typewriter 1950s With Case Comes With Ribbon", item_id: "335971152588", price: "$75.00", views: "80", watchers: "0" }
+[INFO] eBay::client - Listing 5 raw: Listing { title: "Vintage Realistic 42-2105 Tape Control Center for up 3 Deck", item_id: "335971133488", price: "$40.00", views: "41", watchers: "3" }
+[INFO] eBay::client - Listing 6 raw: Listing { title: "Tim McGraw JBL On-ear Headphones", item_id: "335971104535", price: "$40.00", views: "9", watchers: "0" }
+[INFO] eBay::client - Listing 7 raw: Listing { title: "Kodak Carousel 760H Slide Projector w/Remote And Accessories", item_id: "335966644745", price: "$200.00", views: "43", watchers: "2" }
+[INFO] eBay::client - Listing 8 raw: Listing { title: "Linksys N600 E2500 Dual Band Wireless 4-Port Wi-Fi Router E2500 NEW Sealed", item_id: "335954010933", price: "$25.00", views: "12", watchers: "1" }
+[INFO] eBay::client - Listing 1 raw: Listing { title: "Anker PowerCore Select 20000 mAh Power Bank Dual USB Fast Portable Charger", item_id: "335972175128", price: "$25.00", views: "63", watchers: "2" }
+[INFO] eBay::client - Listing 2 raw: Listing { title: "Vintage Bell & Howell Slide Cube 1000 Projector Orig Box", item_id: "335971199792", price: "$50.00", views: "51", watchers: "1" }
+[INFO] eBay::client - Listing 3 raw: Listing { title: "Dell Monitor", item_id: "335971180687", price: "$50.00", views: "27", watchers: "0" }
+[INFO] eBay::client - Listing 4 raw: Listing { title: "Vintage Royal Quiet De Luxe Typewriter 1950s With Case Comes With Ribbon", item_id: "335971152588", price: "$75.00", views: "80", watchers: "0" }
+[INFO] eBay::client - Listing 5 raw: Listing { title: "Vintage Realistic 42-2105 Tape Control Center for up 3 Deck", item_id: "335971133488", price: "$40.00", views: "41", watchers: "3" }
+[INFO] eBay::client - Listing 6 raw: Listing { title: "Tim McGraw JBL On-ear Headphones", item_id: "335971104535", price: "$40.00", views: "9", watchers: "0" }
+[INFO] eBay::client - Listing 7 raw: Listing { title: "Kodak Carousel 760H Slide Projector w/Remote And Accessories", item_id: "335966644745", price: "$200.00", views: "43", watchers: "2" }
+[INFO] eBay::client - Listing 8 raw: Listing { title: "Linksys N600 E2500 Dual Band Wireless 4-Port Wi-Fi Router E2500 NEW Sealed", item_id: "335954010933", price: "$25.00", views: "12", watchers: "1" }
+[INFO] eBay::client - Listing 9 raw: Listing { title: "Vintage Bone China Miniature Dog Figurine Japan", item_id: "335946885779", price: "$14.99", views: "9", watchers: "0" }
+[INFO] eBay::client - Listing 1 raw: Listing { title: "Anker PowerCore Select 20000 mAh Power Bank Dual USB Fast Portable Charger", item_id: "335972175128", price: "$25.00", views: "63", watchers: "2" }
+[INFO] eBay::client - Listing 2 raw: Listing { title: "Vintage Bell & Howell Slide Cube 1000 Projector Orig Box", item_id: "335971199792", price: "$50.00", views: "51", watchers: "1" }
+[INFO] eBay::client - Listing 3 raw: Listing { title: "Dell Monitor", item_id: "335971180687", price: "$50.00", views: "27", watchers: "0" }
+[INFO] eBay::client - Listing 4 raw: Listing { title: "Vintage Royal Quiet De Luxe Typewriter 1950s With Case Comes With Ribbon", item_id: "335971152588", price: "$75.00", views: "80", watchers: "0" }
+[INFO] eBay::client - Listing 5 raw: Listing { title: "Vintage Realistic 42-2105 Tape Control Center for up 3 Deck", item_id: "335971133488", price: "$40.00", views: "41", watchers: "3" }
+[INFO] eBay::client - Listing 6 raw: Listing { title: "Tim McGraw JBL On-ear Headphones", item_id: "335971104535", price: "$40.00", views: "9", watchers: "0" }
+[INFO] eBay::client - Listing 7 raw: Listing { title: "Kodak Carousel 760H Slide Projector w/Remote And Accessories", item_id: "335966644745", price: "$200.00", views: "43", watchers: "2" }
+[INFO] eBay::client - Listing 8 raw: Listing { title: "Linksys N600 E2500 Dual Band Wireless 4-Port Wi-Fi Router E2500 NEW Sealed", item_id: "335954010933", price: "$25.00", views: "12", watchers: "1" }
+[INFO] eBay::client - Listing 9 raw: Listing { title: "Vintage Bone China Miniature Dog Figurine Japan", item_id: "335946885779", price: "$14.99", views: "9", watchers: "0" }
+[INFO] eBay::client - Listing 10 raw: Listing { title: "Rotel RX-1010 Vintage AM/FM Stereo Receiver - Untested - For Parts or Repair", item_id: "335940695042", price: "$90.00", views: "75", watchers: "4" }
+[INFO] eBay::client - Listing 1 raw: Listing { title: "Anker PowerCore Select 20000 mAh Power Bank Dual USB Fast Portable Charger", item_id: "335972175128", price: "$25.00", views: "63", watchers: "2" }
+[INFO] eBay::client - Listing 2 raw: Listing { title: "Vintage Bell & Howell Slide Cube 1000 Projector Orig Box", item_id: "335971199792", price: "$50.00", views: "51", watchers: "1" }
+[INFO] eBay::client - Listing 3 raw: Listing { title: "Dell Monitor", item_id: "335971180687", price: "$50.00", views: "27", watchers: "0" }
+[INFO] eBay::client - Listing 4 raw: Listing { title: "Vintage Royal Quiet De Luxe Typewriter 1950s With Case Comes With Ribbon", item_id: "335971152588", price: "$75.00", views: "80", watchers: "0" }
+[INFO] eBay::client - Listing 5 raw: Listing { title: "Vintage Realistic 42-2105 Tape Control Center for up 3 Deck", item_id: "335971133488", price: "$40.00", views: "41", watchers: "3" }
+[INFO] eBay::client - Listing 6 raw: Listing { title: "Tim McGraw JBL On-ear Headphones", item_id: "335971104535", price: "$40.00", views: "9", watchers: "0" }
+[INFO] eBay::client - Listing 7 raw: Listing { title: "Kodak Carousel 760H Slide Projector w/Remote And Accessories", item_id: "335966644745", price: "$200.00", views: "43", watchers: "2" }
+[INFO] eBay::client - Listing 8 raw: Listing { title: "Linksys N600 E2500 Dual Band Wireless 4-Port Wi-Fi Router E2500 NEW Sealed", item_id: "335954010933", price: "$25.00", views: "12", watchers: "1" }
+[INFO] eBay::client - Listing 9 raw: Listing { title: "Vintage Bone China Miniature Dog Figurine Japan", item_id: "335946885779", price: "$14.99", views: "9", watchers: "0" }
+[INFO] eBay::client - Listing 10 raw: Listing { title: "Rotel RX-1010 Vintage AM/FM Stereo Receiver - Untested - For Parts or Repair", item_id: "335940695042", price: "$90.00", views: "75", watchers: "4" }
+[INFO] eBay::client - Listing 11 raw: Listing { title: "Insignia IS-HC040918 200W Stereo Receiver Amplifier", item_id: "335940659295", price: "$89.99", views: "12", watchers: "0" }
+[INFO] eBay::client - Listing 1 raw: Listing { title: "Anker PowerCore Select 20000 mAh Power Bank Dual USB Fast Portable Charger", item_id: "335972175128", price: "$25.00", views: "63", watchers: "2" }
+[INFO] eBay::client - Listing 2 raw: Listing { title: "Vintage Bell & Howell Slide Cube 1000 Projector Orig Box", item_id: "335971199792", price: "$50.00", views: "51", watchers: "1" }
+[INFO] eBay::client - Listing 3 raw: Listing { title: "Dell Monitor", item_id: "335971180687", price: "$50.00", views: "27", watchers: "0" }
+[INFO] eBay::client - Listing 4 raw: Listing { title: "Vintage Royal Quiet De Luxe Typewriter 1950s With Case Comes With Ribbon", item_id: "335971152588", price: "$75.00", views: "80", watchers: "0" }
+[INFO] eBay::client - Listing 5 raw: Listing { title: "Vintage Realistic 42-2105 Tape Control Center for up 3 Deck", item_id: "335971133488", price: "$40.00", views: "41", watchers: "3" }
+[INFO] eBay::client - Listing 6 raw: Listing { title: "Tim McGraw JBL On-ear Headphones", item_id: "335971104535", price: "$40.00", views: "9", watchers: "0" }
+[INFO] eBay::client - Listing 7 raw: Listing { title: "Kodak Carousel 760H Slide Projector w/Remote And Accessories", item_id: "335966644745", price: "$200.00", views: "43", watchers: "2" }
+[INFO] eBay::client - Listing 8 raw: Listing { title: "Linksys N600 E2500 Dual Band Wireless 4-Port Wi-Fi Router E2500 NEW Sealed", item_id: "335954010933", price: "$25.00", views: "12", watchers: "1" }
+[INFO] eBay::client - Listing 9 raw: Listing { title: "Vintage Bone China Miniature Dog Figurine Japan", item_id: "335946885779", price: "$14.99", views: "9", watchers: "0" }
+[INFO] eBay::client - Listing 10 raw: Listing { title: "Rotel RX-1010 Vintage AM/FM Stereo Receiver - Untested - For Parts or Repair", item_id: "335940695042", price: "$90.00", views: "75", watchers: "4" }
+[INFO] eBay::client - Listing 11 raw: Listing { title: "Insignia IS-HC040918 200W Stereo Receiver Amplifier", item_id: "335940659295", price: "$89.99", views: "12", watchers: "0" }
+[INFO] eBay::client - Listing 12 raw: Listing { title: "Antec VP450 450 Watt Power Supply (ATX 12V v2.30)", item_id: "335930244024", price: "$38.00", views: "11", watchers: "1" }
+[INFO] eBay::client - Listing 1 raw: Listing { title: "Anker PowerCore Select 20000 mAh Power Bank Dual USB Fast Portable Charger", item_id: "335972175128", price: "$25.00", views: "63", watchers: "2" }
+[INFO] eBay::client - Listing 2 raw: Listing { title: "Vintage Bell & Howell Slide Cube 1000 Projector Orig Box", item_id: "335971199792", price: "$50.00", views: "51", watchers: "1" }
+[INFO] eBay::client - Listing 3 raw: Listing { title: "Dell Monitor", item_id: "335971180687", price: "$50.00", views: "27", watchers: "0" }
+[INFO] eBay::client - Listing 4 raw: Listing { title: "Vintage Royal Quiet De Luxe Typewriter 1950s With Case Comes With Ribbon", item_id: "335971152588", price: "$75.00", views: "80", watchers: "0" }
+[INFO] eBay::client - Listing 5 raw: Listing { title: "Vintage Realistic 42-2105 Tape Control Center for up 3 Deck", item_id: "335971133488", price: "$40.00", views: "41", watchers: "3" }
+[INFO] eBay::client - Listing 6 raw: Listing { title: "Tim McGraw JBL On-ear Headphones", item_id: "335971104535", price: "$40.00", views: "9", watchers: "0" }
+[INFO] eBay::client - Listing 7 raw: Listing { title: "Kodak Carousel 760H Slide Projector w/Remote And Accessories", item_id: "335966644745", price: "$200.00", views: "43", watchers: "2" }
+[INFO] eBay::client - Listing 8 raw: Listing { title: "Linksys N600 E2500 Dual Band Wireless 4-Port Wi-Fi Router E2500 NEW Sealed", item_id: "335954010933", price: "$25.00", views: "12", watchers: "1" }
+[INFO] eBay::client - Listing 9 raw: Listing { title: "Vintage Bone China Miniature Dog Figurine Japan", item_id: "335946885779", price: "$14.99", views: "9", watchers: "0" }
+[INFO] eBay::client - Listing 10 raw: Listing { title: "Rotel RX-1010 Vintage AM/FM Stereo Receiver - Untested - For Parts or Repair", item_id: "335940695042", price: "$90.00", views: "75", watchers: "4" }
+[INFO] eBay::client - Listing 11 raw: Listing { title: "Insignia IS-HC040918 200W Stereo Receiver Amplifier", item_id: "335940659295", price: "$89.99", views: "12", watchers: "0" }
+[INFO] eBay::client - Listing 12 raw: Listing { title: "Antec VP450 450 Watt Power Supply (ATX 12V v2.30)", item_id: "335930244024", price: "$38.00", views: "11", watchers: "1" }
+[INFO] eBay::client - Listing 13 raw: Listing { title: "Antec VP450 450 Watt Power Supply (ATX 12V v2.30)", item_id: "335930234676", price: "$40.00", views: "7", watchers: "0" }
+[INFO] eBay::client - Shutting down browser and geckodriver...

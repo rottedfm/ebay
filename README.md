@@ -12,7 +12,7 @@ Log into eBay (with CAPTCHA solving), scrape your listings, and save them to a S
 ---
 
 ## 🧪 CLI
-- [X] Add CLI commands:
+- [] Add CLI commands:
   - `login` – Login with CAPTCHA solving
   - `scrape` – Scrape listings
   - `sync` – Scrape + save to DB
@@ -31,7 +31,7 @@ Log into eBay (with CAPTCHA solving), scrape your listings, and save them to a S
 ## 📊 Scrape Listings
 - [ ] Navigate to listings page
 - [ ] Extract title, price, qty, condition, ID, URL
-- [ ] Store data in `Listing` struct
+- [ ] Store data in `Listing` struct 
 
 ---
 
