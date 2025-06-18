@@ -10,12 +10,14 @@ use std::process::{Child, Command, Stdio};
 use tempfile::TempDir;
 use tokio::time::sleep;
 
+// Wrapper around FantocciniClient and GeckoDriver process
 pub struct BrowserClient {
-    driver: Child,
-    client: FantocciniClient,
-    _profile_dir: TempDir, // Keeps Firefox profile alive
+    driver: Child,            // geckodriver child process
+    client: FantocciniClient, // connected WebDriver session
+    _profile_dir: TempDir,    // Keeps Firefox profile alive
 }
 
+// Represent a scraped eBay listing
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Listing {
     pub title: String,
@@ -26,10 +28,13 @@ pub struct Listing {
 }
 
 impl BrowserClient {
+    // Init the geckodriver process and connects the WebDriver client to it
     pub async fn new() -> Result<Self> {
+        // Check for geckodriver in the system PATH
         let geckodriver_path =
             which::which("geckodriver").context("Could not find 'geckodriver' in PATH")?;
 
+        // Create and configure a temporary Firefox profile with anti-detection settings
         let profile_dir =
             Self::create_firefox_profile().context("Failed to create custom Firefox profile")?;
 
@@ -42,6 +47,7 @@ impl BrowserClient {
             .spawn()
             .context("Failed to spawn geckodriver process")?;
 
+        // allow time for geckodriver to start
         sleep(tokio::time::Duration::from_secs(2)).await;
 
         info!("Connecting to Fantoccini WebDriver...");
@@ -54,10 +60,11 @@ impl BrowserClient {
         Ok(Self {
             driver,
             client,
-            _profile_dir: profile_dir,
+            _profile_dir: profile_dir, // keeps profile alive during session
         })
     }
 
+    /// Creates a temporary Firefox profile with custom anti-bot settings
     fn create_firefox_profile() -> Result<TempDir> {
         let dir = tempfile::tempdir().context("Failed to create temporary profile dir")?;
         let user_js_path = dir.path().join("user.js");
@@ -78,27 +85,29 @@ user_pref("useAutomationExtension", false);
         Ok(dir)
     }
 
+    /// Navigates the browser to a given URL
     pub async fn goto(&mut self, url: &str) -> Result<()> {
         info!("Navigating to: {url}");
         self.client.goto(url).await.context("Failed to navigate")?;
         Ok(())
     }
 
-    pub async fn send_discount_offers(&mut self, percent: f32) -> Result<()> {
+    /// Loops through available "Send Offer" buttons on eBay and submits discount offers
+    pub async fn send_discount_offers(&mut self, percent: i16) -> Result<()> {
         let main_url = "https://www.ebay.com/mys/overview";
         let mut offers_sent = 0;
 
         loop {
-            // Always return to eBay overview to refresh the DOM
             self.goto(main_url)
                 .await
                 .context("Failed to navigate to eBay overview")?;
             tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
 
-            // Try to find the first "Send Offer" button
+            // Get the first offer button on the page
             let offer_button = match self
                 .client
                 .wait()
+                .at_most(tokio::time::Duration::from_secs(3))
                 .for_element(fantoccini::Locator::Css(
                     ".transactions-line-actions button.me-fake-button.btn--primary",
                 ))
@@ -111,19 +120,19 @@ user_pref("useAutomationExtension", false);
                 }
             };
 
-            // Click it
-            offer_button
-                .click()
+            // Find the parent .pre-order-item container via XPath
+            let parent_item = offer_button
+                .find(fantoccini::Locator::XPath(
+                    "ancestor::div[contains(@class, 'pre-order-item')]",
+                ))
                 .await
-                .context("Failed to click offer button")?;
-            tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
+                .context("Failed to find parent .pre-order-item")?;
 
-            // Extract price
-            let price_text = self
-                .client
-                .wait()
-                .for_element(fantoccini::Locator::Css(".item-price .bold"))
-                .await?
+            // Extract the price from within that listing
+            let price_text = parent_item
+                .find(fantoccini::Locator::Css(".item-price .bold"))
+                .await
+                .context("Failed to find item price within listing")?
                 .text()
                 .await
                 .unwrap_or_default();
@@ -141,10 +150,17 @@ user_pref("useAutomationExtension", false);
                 continue;
             }
 
-            let discount_multiplier = 1.0 - (percent / 100.0);
+            let discount_multiplier = 1.0 - (percent as f32 / 100.0);
             let offer_price = (original_price * discount_multiplier * 100.0).round() / 100.0;
 
-            // Enter offer price
+            // Click the offer button
+            offer_button
+                .click()
+                .await
+                .context("Failed to click offer button")?;
+            tokio::time::sleep(tokio::time::Duration::from_secs(2)).await;
+
+            // Fill in offer amount
             let input = self
                 .client
                 .wait()
@@ -204,6 +220,7 @@ user_pref("useAutomationExtension", false);
         Ok(())
     }
 
+    /// Detects and waits through CAPTCHA screens by polling URL changes
     pub async fn wait_if_captcha_detected(&mut self) -> Result<()> {
         let current_url = self.client.current_url().await?.to_string();
 
@@ -227,6 +244,7 @@ user_pref("useAutomationExtension", false);
         Ok(())
     }
 
+    /// Fills out the email portion of the eBay login form
     pub async fn email_submit(&mut self, email: &str) -> Result<()> {
         info!("Typing email into selector: #userid...");
 

@@ -6,6 +6,7 @@ use std::collections::HashMap;
 use std::fs::{File, OpenOptions};
 use std::path::Path;
 
+// A simplified version of `Listing` used for CSV serialization
 #[derive(Debug, Serialize, Deserialize, Clone)]
 struct CsvListing {
     pub title: String,
@@ -15,6 +16,7 @@ struct CsvListing {
     pub watchers: String,
 }
 
+// Converts a `Listing` to a `CsvListing` for CSV-friendly output
 impl From<&Listing> for CsvListing {
     fn from(listing: &Listing) -> Self {
         CsvListing {
@@ -27,7 +29,9 @@ impl From<&Listing> for CsvListing {
     }
 }
 
+// Write a list of new listings to a CSV file, preserving any previously existing data
 pub fn write_listings_to_csv(new_listings: &[Listing], csv_path: &str) -> Result<()> {
+    // A map of all listings keyed by item_id, used to deduplicate and overwrite old entries
     let mut map: HashMap<String, CsvListing> = HashMap::new();
 
     // Load existing records if file exists
@@ -55,10 +59,12 @@ pub fn write_listings_to_csv(new_listings: &[Listing], csv_path: &str) -> Result
 
     let mut wtr = WriterBuilder::new().has_headers(true).from_writer(file);
 
+    // Write all the current values in the map back to the file
     for entry in map.values() {
         wtr.serialize(entry)?;
     }
 
+    // Ensure all data is flushed to disk
     wtr.flush()?;
     Ok(())
 }

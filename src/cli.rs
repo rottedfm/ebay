@@ -10,10 +10,10 @@ pub struct Cli {
 
 #[derive(Subcommand)]
 pub enum Commands {
-    /// Scrape and save montly profit in a loop for led matrix
-    Counter,
     /// Send offers at set percentage
-    Offer { percentage: f32 },
+    Offer { percentage: i16 },
     /// Scrape inventory data
     Inventory,
+    /// Fetch stats
+    Stats,
 }
