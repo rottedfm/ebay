@@ -142,7 +142,7 @@ async fn main() -> anyhow::Result<()> {
                 .await
                 .context("Failed to close browser session")?;
         }
-        &Commands::Profit => {
+        &Commands::Stats => {
             let mut browser = BrowserClient::new()
                 .await
                 .context("Failed to start browser client")?;
