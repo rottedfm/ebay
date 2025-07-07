@@ -1,123 +1,66 @@
 # eSd - eBay Seller Dashboard
 
-## IMPORTANT!!!
-- [eBay API Terms Of Service](https://developer.ebay.com/join/api-license-agreement)
-- [eBay Terms Of Service](https://www.ebay.com/help/policies/member-behaviour-policies/user-agreement?id=4259)
+## 📜 Terms of Use & Compliance
 
-### 1. Allowed Items Only (Listing Policy)
-- [ ] Item is **not prohibited** (e.g., weapons, counterfeit goods, recalled items, etc.)
-- [ ] You have the **legal right to sell** the item (e.g., licenses, trademarks, ownership)
-- [ ] You are not violating any **brand restrictions or VERO violations**
+To ensure this application remains fully compliant with eBay's terms, policies, and API license agreement, the following guidelines and conditions must be followed at all times:
 
+### ✅ Scope of Use
+This tool is intended for use by a single, authenticated eBay seller account. It manages your own listings, feedback, offers, and inventory through the eBay API or (where necessary) limited, respectful scraping of your own seller dashboard.
 
-### 2. Accurate Listings
-- [ ] Title reflects the item (no clickbait or keyword spamming)
-- [ ] Photos are accurate and match the product (or disclose if stock photo)
-- [ ] Condition is correctly set ("New", "Used", etc.)
-- [ ] Item specifics (brand, size, etc.) are honest and complete
+### 📦 Listing Compliance
+Listings must follow eBay’s global listing policies:
+- Only legal, permitted, and accurately described items may be listed.
+- Listings must not include prohibited content such as counterfeit goods, personal contact info, or off-site links.
+- Prices and shipping fees must be transparent and not misleading.
+- Stock levels must be accurate; end listings promptly when items sell out.
 
+### 🧾 Listing Structure & Content
+- Titles and descriptions must truthfully reflect the item.
+- Images must be of the actual item unless explicitly disclosed as stock photos.
+- No duplicate listings unless allowed via variation formats.
+- Auction and Buy It Now formats must not be used to manipulate fees or rankings.
 
-### 3. Pricing & Terms
-- [ ] Pricing is transparent and fair (no $0.01 bait-and-switch shipping tricks)
-- [ ] Shipping costs and timelines are accurately described
-- [ ] Return policies are clearly stated and honored
-- [ ] Customs/tax info is disclosed for international buyers
+### 🔄 Inventory & Offer Handling
+This tool may:
+- List, revise, and end items using the eBay Inventory or Trading API.
+- Handle offers via the eBay Negotiation API.
+- Manage pricing, stock levels, and return policies.
 
-### 4. Content Restrictions
-- [ ] No off-site links or personal contact info in the listing
-- [ ] No attempts to take the transaction **off-eBay**
-- [ ] No duplicate or miscategorized listings
+Offer and pricing updates must follow eBay's dynamic pricing and fair use standards. Shill bidding and coordinated activity are strictly prohibited.
 
+### ⭐ Feedback Management
+Feedback is displayed using the authenticated seller’s data. When stored, it must be refreshed every 6 hours. Public display of other users’ feedback or scraping buyer reviews is not allowed.
 
-### 5. Inventory & Fulfillment
-- [ ] Only list items you **actually have in stock**
-- [ ] End listings promptly if out of stock
-- [ ] Upload tracking info on time (if applicable)
-- [ ] Accurately reflect handling time and shipping service
+### 🔐 API Access & Token Use
+You must:
+- Use secure OAuth authentication and store access tokens safely.
+- Never expose App ID or secrets in logs, UIs, or shared code.
+- Comply with all rate limits and refresh tokens before expiration.
+- Only use API endpoints for your own data and account.
 
-### 6. Listing Format Rules
-- [ ] Auction starting prices are fair
-- [ ] Buy It Now pricing is not misleading
-- [ ] No shill bidding or listing manipulation
-- [ ] Do not use bots or automation to game visibility or promote items unfairly
+API usage must respect eBay’s Developer Program Agreement, including restrictions on aggregation, sharing data externally, or analyzing competitive data at scale.
 
+### 🧠 Data Storage & Privacy
+- All scraped or API-fetched data must be refreshed regularly.
+- Do not retain data beyond permitted intervals (e.g., 24 hrs for listings, 6 hrs for feedback).
+- Personal or sensitive data must be encrypted and access-controlled.
+- If scraping is used, it must only target your account’s public dashboard or listings.
 
-### 7. Feedback Handling (via UI or API)
-- [ ] Feedback shown is refreshed at least every **6 hours**
-- [ ] You do not store or display other users' feedback data
-- [ ] You respond to feedback professionally and according to eBay rules
+No buyer-identifiable information may be stored, displayed, or exported.
 
+### 🧰 TUI App Behavior
+The terminal-based application:
+- Must act only on behalf of the authenticated user.
+- May automate inventory syncing, feedback responses, or offer management.
+- Should log listing activity and maintain auditability.
+- Must not auto-post content or operate without user control or consent.
 
-### 8. Offer Management
-- [ ] Offers handled via the [Negotiation API](https://developer.ebay.com/api-docs/sell/negotiation/resources/offer) or within your seller dashboard
-- [ ] Buyer usernames or info is handled securely
-- [ ] Offers are refreshed regularly and not stored long-term
+### ⚠️ Prohibited Activities
+- Scraping other sellers' data.
+- Displaying, sharing, or storing data from unauthorized accounts.
+- Circumventing eBay rate limits or anti-bot systems.
+- Using the application to manipulate search, rankings, or pricing.
 
-
-### 9. eBay API Usage (Developer Compliance)
-
-#### Authentication
-- [ ] You use your own eBay **App ID, Cert ID, and OAuth token**
-- [ ] Tokens are stored securely (e.g., `.env` or encrypted config)
-- [ ] You use OAuth 2.0 for any sensitive data access
-
-#### Rate Limits & App Behavior
-- [ ] You respect all **rate limits** (per-app and per-endpoint)
-- [ ] You do not share your API keys or tokens with other users
-- [ ] You do not bulk scrape or perform data mining beyond your account
-
-#### Data Freshness Rules
-| Data Type     | Refreshed Every |
-|---------------|------------------|
-| Listings      | [ ] ≤ 24h ✔️     |
-| Feedback      | [ ] ≤ 6h ✔️      |
-| Offers        | [ ] ≤ 24h ✔️     |
-
-####  Data Storage
-- [ ] Only necessary data is stored
-- [ ] Personal or buyer data is **not stored long-term**
-- [ ] You comply with the [DPRA Addendum](https://developer.ebay.com/api-docs/static/rest-request-components.html#data-protection-and-security) if storing personal data
-- [ ] You delete expired or invalidated tokens/data promptly
-
-
-### 10. Automation & TUI App Behavior
-- [ ] Your TUI app **only manages your own account**
-- [ ] It does not expose, sync, or display other sellers' listings
-- [ ] You have a mechanism to **refresh or resync** listing/feedback data
-- [ ] You log changes (create/update/end listings) for auditability
-- [ ] You avoid calling APIs for data already cached unless expired
-
-
-### 11. Security & Ethics
-- [ ] API credentials and tokens are never hardcoded or publicly visible
-- [ ] Buyer/user data is not logged, shared, or misused
-- [ ] You publish a privacy policy if user tokens or personal data are stored
-- [ ] You delete sensitive data within 10 days of token expiration or app deactivation
-
-
-### Bonus Best Practices
-- [ ] Use a local TTL (time-to-live) cache for listings/feedback
-- [ ] Display last sync timestamp in your TUI
-- [ ] Offer manual "Resync" option for stale data
-- [ ] Use item IDs as the primary key in your DB or display list
-- [ ] Respect listing insertion fees and do not auto-list in bulk without user review
-
-
-
-
-
-## DELETE - What do we need
-POSTED
-- Offer bot (watched = decrease listing price, Then offer set discount)
-- Feedback bot
-- Check every listing for discolusers
-
-UNPOSTED
-- read pictures
-- research item with chatgpt
-- make checklist for photo quality
-- ask user for codition
-- generate different keywords for to look for ebay listings of the same item
-- generate profit maximized price
-
+### ✅ Summary
+Use the official eBay API wherever possible. Scraping should only be used as a fallback for your own account data. Respect all privacy, rate limits, and security rules. By using this tool, you agree to comply with eBay’s [API License Agreement](https://developer.ebay.com/join/api-license-agreement), [Seller Policies](https://www.ebay.com/help/policies), and applicable local laws.
 
