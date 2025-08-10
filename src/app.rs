@@ -39,6 +39,8 @@ pub struct App {
     pub feedback_score: Option<String>,
     pub items_sold: Option<u32>,
     pub follower_count: Option<u32>,
+    pub captcha_detected: bool,
+    pub waiting_for_user_input: bool,
 }
 
 impl Default for App {
@@ -55,6 +57,8 @@ impl Default for App {
             feedback_score: None,
             items_sold: None,
             follower_count: None,
+            captcha_detected: false,
+            waiting_for_user_input: false,
         }
     }
 }
@@ -103,31 +107,74 @@ impl App {
                         self.progress_message = message;
                     }
                     AppEvent::Init(url) => {
-                        self.navigate_to_public_page(url).await?;
-                        self.events.send(AppEvent::SetProgress(
-                            0.4,
-                            "Scraping items sold...".to_string(),
-                        ));
-                        let items_sold = self.scrape_items_sold().await?;
-                        self.events.send(AppEvent::ScrapeItemsSold(items_sold));
-                        self.events.send(AppEvent::SetProgress(
-                            0.5,
-                            "Scraping feedback score...".to_string(),
-                        ));
-                        let feedback_score = self.scrape_feedback().await?;
-                        self.events.send(AppEvent::ScrapeFeedback(feedback_score));
-                        self.events.send(AppEvent::SetProgress(
-                            0.6,
-                            "Scraping follower count...".to_string(),
-                        ));
-                        let follower_count = self.scrape_follower_count().await?;
-                        self.events.send(AppEvent::ScrapeFollowerCount(follower_count));
-                        self.events.send(AppEvent::SetProgress(
-                            1.0,
-                            "Initialization complete!".to_string(),
-                        ));
-                        tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
-                        self.state = AppState::Running;
+                        self.navigate_to_public_page(url.clone()).await?;
+                        let client = self.client.clone();
+                        let sender = self.events.sender.clone();
+                        
+                        tokio::spawn(async move {
+                            let _ = sender.send(Event::App(AppEvent::SetProgress(
+                                0.4,
+                                "📦 Scraping items sold...".to_string(),
+                            )));
+                            
+                            tokio::time::sleep(tokio::time::Duration::from_millis(500)).await;
+                            
+                            if let Some(client) = &client {
+                                match Self::scrape_items_sold_static(&client).await {
+                                    Ok(items_sold) => {
+                                        let _ = sender.send(Event::App(AppEvent::ScrapeItemsSold(items_sold)));
+                                    }
+                                    Err(e) => {
+                                        log::error!("Failed to scrape items sold: {}", e);
+                                    }
+                                }
+                            }
+                            
+                            let _ = sender.send(Event::App(AppEvent::SetProgress(
+                                0.6,
+                                "⭐ Scraping feedback score...".to_string(),
+                            )));
+                            
+                            tokio::time::sleep(tokio::time::Duration::from_millis(500)).await;
+                            
+                            if let Some(client) = &client {
+                                match Self::scrape_feedback_static(&client).await {
+                                    Ok(feedback_score) => {
+                                        let _ = sender.send(Event::App(AppEvent::ScrapeFeedback(feedback_score)));
+                                    }
+                                    Err(e) => {
+                                        log::error!("Failed to scrape feedback: {}", e);
+                                    }
+                                }
+                            }
+                            
+                            let _ = sender.send(Event::App(AppEvent::SetProgress(
+                                0.8,
+                                "👥 Scraping follower count...".to_string(),
+                            )));
+                            
+                            tokio::time::sleep(tokio::time::Duration::from_millis(500)).await;
+                            
+                            if let Some(client) = &client {
+                                match Self::scrape_follower_count_static(&client).await {
+                                    Ok(follower_count) => {
+                                        let _ = sender.send(Event::App(AppEvent::ScrapeFollowerCount(follower_count)));
+                                    }
+                                    Err(e) => {
+                                        log::error!("Failed to scrape follower count: {}", e);
+                                    }
+                                }
+                            }
+                            
+                            let _ = sender.send(Event::App(AppEvent::SetProgress(
+                                1.0,
+                                "✅ Scraping complete!".to_string(),
+                            )));
+                            
+                            tokio::time::sleep(tokio::time::Duration::from_secs(1)).await;
+                            
+                            let _ = sender.send(Event::App(AppEvent::ScrapingComplete));
+                        });
                     }
                     AppEvent::ScrapeFollowerCount(follower_count) => {
                         self.follower_count = Some(follower_count);
@@ -135,6 +182,46 @@ impl App {
                             "Received follower count: {}",
                             self.follower_count.unwrap_or(0)
                         );
+                    }
+                    AppEvent::GeckodriverStarted => {
+                        info!("Geckodriver started successfully");
+                        self.events.send(AppEvent::ClientReady);
+                    }
+                    AppEvent::GeckodriverError(error) => {
+                        self.progress_message = format!("Geckodriver error: {}", error);
+                    }
+                    AppEvent::WebDriverConnected => {
+                        info!("WebDriver client connected");
+                        self.events.send(AppEvent::ClientReady);
+                    }
+                    AppEvent::WebDriverError(error) => {
+                        self.progress_message = format!("WebDriver error: {}", error);
+                    }
+                    AppEvent::NavigateToUrl(url) => {
+                        info!("Navigating to URL: {}", url);
+                    }
+                    AppEvent::NavigationComplete => {
+                        info!("Navigation completed successfully");
+                    }
+                    AppEvent::NavigationError(error) => {
+                        self.progress_message = format!("Navigation error: {}", error);
+                    }
+                    AppEvent::CaptchaDetected => {
+                        self.captcha_detected = true;
+                        self.waiting_for_user_input = true;
+                        self.progress_message = "CAPTCHA detected! Press 'y' to continue or 'n' to skip.".to_string();
+                    }
+                    AppEvent::CaptchaResponse(continue_scraping) => {
+                        self.captcha_detected = false;
+                        self.waiting_for_user_input = false;
+                        if continue_scraping {
+                            self.progress_message = "Continuing with scraping...".to_string();
+                        } else {
+                            self.progress_message = "Scraping cancelled due to CAPTCHA.".to_string();
+                        }
+                    }
+                    AppEvent::ScrapingComplete => {
+                        self.state = AppState::Running;
                     }
                 },
             }
@@ -144,13 +231,25 @@ impl App {
 
     /// Handles the key events and updates the state of [`App`].
     pub fn handle_key_events(&mut self, key_event: KeyEvent) -> color_eyre::Result<()> {
-        match key_event.code {
-            KeyCode::Esc | KeyCode::Char('q') => self.events.send(AppEvent::Quit),
-            KeyCode::Char('c' | 'C') if key_event.modifiers == KeyModifiers::CONTROL => {
-                self.events.send(AppEvent::Quit)
+        if self.waiting_for_user_input && self.captcha_detected {
+            match key_event.code {
+                KeyCode::Char('y' | 'Y') => {
+                    self.events.send(AppEvent::CaptchaResponse(true));
+                }
+                KeyCode::Char('n' | 'N') => {
+                    self.events.send(AppEvent::CaptchaResponse(false));
+                }
+                _ => {}
             }
-            // Other handlers you could add here.
-            _ => {}
+        } else {
+            match key_event.code {
+                KeyCode::Esc | KeyCode::Char('q') => self.events.send(AppEvent::Quit),
+                KeyCode::Char('c' | 'C') if key_event.modifiers == KeyModifiers::CONTROL => {
+                    self.events.send(AppEvent::Quit)
+                }
+                // Other handlers you could add here.
+                _ => {}
+            }
         }
         Ok(())
     }
@@ -265,7 +364,7 @@ impl App {
         info!("Starting geckodriver");
         self.events.send(AppEvent::SetProgress(
             0.1,
-            "Starting geckodriver...".to_string(),
+            "🚀 Starting geckodriver...".to_string(),
         ));
         let child = Command::new("./geckodriver")
             .stdout(std::process::Stdio::null())
@@ -274,7 +373,7 @@ impl App {
         self.geckodriver = Some(child);
         self.events.send(AppEvent::SetProgress(
             0.2,
-            "Connecting to fantoccini...".to_string(),
+            "🔗 Connecting to fantoccini...".to_string(),
         ));
         info!("Connecting to webdriver");
         match ClientBuilder::native()
@@ -286,7 +385,7 @@ impl App {
                 self.client = Some(client);
                 self.events.send(AppEvent::SetProgress(
                     0.3,
-                    "Navigating to ebay.com...".to_string(),
+                    "🌐 Navigating to ebay.com...".to_string(),
                 ));
                 self.events.send(AppEvent::ClientReady);
                 info!("Webdriver client connected");
@@ -299,13 +398,100 @@ impl App {
         Ok(())
     }
 
+    /// Check if URL contains captcha
+    pub fn check_url_for_captcha(&mut self, url: &str) {
+        if url.to_lowercase().contains("captcha") {
+            self.events.send(AppEvent::SetProgress(
+                self.progress,
+                "⚠️  CAPTCHA detected in URL! Please solve it manually and press any key to continue...".to_string(),
+            ));
+        }
+    }
+
     /// Find the public ebay page
     pub async fn navigate_to_public_page(&mut self, url: String) -> color_eyre::Result<()> {
         info!("Navigating to {}", url);
+        self.check_url_for_captcha(&url);
         if let Some(client) = &mut self.client {
             client.goto(&url).await?;
             info!("Navigated to {}", url);
         }
         Ok(())
+    }
+
+    /// Static version of scrape_items_sold for use in async tasks
+    pub async fn scrape_items_sold_static(client: &Client) -> color_eyre::Result<u32> {
+        info!("Attempting to scrape items sold");
+        match client
+            .wait()
+            .for_element(fantoccini::Locator::Css(
+                "div[title*='items sold'] > span",
+            ))
+            .await
+        {
+            Ok(sold_items_element) => {
+                let sold_items_text = sold_items_element.text().await?;
+                info!("Raw sold items text: {}", sold_items_text);
+                let sold_items_count =
+                    sold_items_text.replace(",", "").parse::<u32>().unwrap_or_else(|e| {
+                        error!("Failed to parse sold items count: {}", e);
+                        0
+                    });
+                Ok(sold_items_count)
+            }
+            Err(e) => {
+                info!("Could not find sold items element: {}", e);
+                Ok(0)
+            }
+        }
+    }
+
+    /// Static version of scrape_feedback for use in async tasks
+    pub async fn scrape_feedback_static(client: &Client) -> color_eyre::Result<String> {
+        info!("Attempting to scrape feedback");
+        match client
+            .wait()
+            .for_element(fantoccini::Locator::Css(
+                ".str-seller-card__feedback-link",
+            ))
+            .await
+        {
+            Ok(feedback_element) => {
+                let feedback_text = feedback_element.text().await?;
+                info!("Feedback text: {}", feedback_text);
+                Ok(feedback_text)
+            }
+            Err(e) => {
+                info!("Could not find feedback element: {}", e);
+                Ok(String::new())
+            }
+        }
+    }
+
+    /// Static version of scrape_follower_count for use in async tasks
+    pub async fn scrape_follower_count_static(client: &Client) -> color_eyre::Result<u32> {
+        info!("Attempting to scrape follower count");
+        match client
+            .wait()
+            .for_element(fantoccini::Locator::Css(
+                r#"div[title*="follower"] span.str-text-span.BOLD"#,
+            ))
+            .await
+        {
+            Ok(follower_element) => {
+                let follower_text = follower_element.text().await?;
+                info!("Raw follower text: {}", follower_text);
+                let follower_count =
+                    follower_text.replace(",", "").parse::<u32>().unwrap_or_else(|e| {
+                        error!("Failed to parse follower count: {}", e);
+                        0
+                    });
+                Ok(follower_count)
+            }
+            Err(e) => {
+                info!("Could not find follower element: {}", e);
+                Ok(0)
+            }
+        }
     }
 }

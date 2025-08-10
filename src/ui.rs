@@ -31,7 +31,7 @@ impl App {
             .direction(Direction::Vertical)
             .constraints([
                 Constraint::Min(0),
-                Constraint::Length(3), // For the paragraph
+                Constraint::Length(1), // For the paragraph
                 Constraint::Length(1), // For the gauge
                 Constraint::Min(0),
             ])
@@ -43,7 +43,7 @@ impl App {
             self.progress_message.as_str()
         })
             .fg(Color::White)
-            .bg(Color::Black)
+            .bg(Color::DarkGray)
             .centered();
 
         let num_dots = 20;
@@ -52,7 +52,7 @@ impl App {
 
         let mut spans = Vec::new();
         for _ in 0..filled_dots {
-            spans.push(Span::styled(".", Style::default().fg(Color::Green)));
+            spans.push(Span::styled(".", Style::default().fg(Color::White)));
         }
         for _ in 0..empty_dots {
             spans.push(Span::styled(".", Style::default().fg(Color::DarkGray)));

@@ -380,6 +380,7 @@ dependencies = [
  "futures",
  "log",
  "ratatui",
+ "serde_json",
  "tokio",
  "webdriver",
 ]
