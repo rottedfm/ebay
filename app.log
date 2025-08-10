@@ -1,0 +1,18 @@
+[2025-08-06T13:36:11Z INFO  ebay] Starting up
+[2025-08-06T13:36:11Z INFO  ebay::app] Starting geckodriver
+[2025-08-06T13:36:11Z INFO  ebay::app] Connecting to webdriver
+[2025-08-06T13:36:14Z INFO  ebay::app] Webdriver client connected
+[2025-08-06T13:36:14Z INFO  ebay::app] Navigating to https://www.ebay.com/usr/thriftngo5
+[2025-08-06T13:36:16Z INFO  ebay::app] Navigated to https://www.ebay.com/usr/thriftngo5
+[2025-08-06T13:36:16Z INFO  ebay::app] Attempting to scrape items sold
+[2025-08-06T13:36:16Z INFO  ebay::app] Raw sold items text: 41
+[2025-08-06T13:36:16Z INFO  ebay::app] Attempting to scrape feedback
+[2025-08-06T13:36:16Z INFO  ebay::app] Feedback text: 95.5% positive feedback (20)
+[2025-08-06T13:36:16Z INFO  ebay::app] Attempting to scrape follower count
+[2025-08-06T13:36:16Z INFO  ebay::app] Raw follower text: 1
+[2025-08-06T13:36:18Z INFO  ebay::app] Received items sold count: 41
+[2025-08-06T13:36:18Z INFO  ebay::app] Received feedback text: 95.5% positive feedback (20)
+[2025-08-06T13:36:18Z INFO  ebay::app] Received follower count: 1
+[2025-08-06T13:36:24Z INFO  ebay::app] Quitting fantoccini client
+[2025-08-06T13:36:24Z INFO  ebay::app] Killing geckodriver
+[2025-08-06T13:36:24Z INFO  ebay] Shutting down
