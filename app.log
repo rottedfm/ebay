@@ -1,238 +1,148 @@
-[2025-08-10T08:33:03Z INFO  ebay] Starting up
-[2025-08-10T08:33:03Z INFO  ebay::app] Starting geckodriver
-[2025-08-10T08:33:03Z INFO  ebay::app] Connecting to webdriver
-[2025-08-10T08:33:05Z INFO  ebay::app] Webdriver client connected
-[2025-08-10T08:33:05Z INFO  ebay::app] Navigating to https://www.ebay.com/usr/thriftngo5
-[2025-08-10T08:33:09Z INFO  ebay::app] Navigated to https://www.ebay.com/usr/thriftngo5
-[2025-08-10T08:33:10Z INFO  ebay::app] ✅ CAPTCHA resolved - continuing scraping
-[2025-08-10T08:33:10Z INFO  ebay::app] Attempting to scrape items sold
-[2025-08-10T08:33:10Z INFO  ebay::app] Raw sold items text: 43
-[2025-08-10T08:33:10Z INFO  ebay::app] Received items sold count: 43
-[2025-08-10T08:33:11Z INFO  ebay::app] Attempting to scrape feedback
-[2025-08-10T08:33:11Z INFO  ebay::app] Feedback text: 95.7% positive feedback (21)
-[2025-08-10T08:33:11Z INFO  ebay::app] Received feedback text: 95.7% positive feedback (21)
-[2025-08-10T08:33:11Z INFO  ebay::app] Attempting to scrape follower count
-[2025-08-10T08:33:11Z INFO  ebay::app] Raw follower text: 1 follower
-[2025-08-10T08:33:11Z INFO  ebay::app] Received follower count: 1
-[2025-08-10T08:33:12Z INFO  ebay::app] Attempting to click the 'see all' button
-[2025-08-10T08:33:14Z INFO  ebay::app] 'See all' button clicked successfully
-[2025-08-10T08:33:15Z INFO  ebay::app] Starting to scrape active listings from current page
-[2025-08-10T08:33:18Z INFO  ebay::app] Found elements with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Found 52 listings using selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #1 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #1: Rei Ayanami Gothic Night Sega Prize Figure Evangelion 2009 New in Blister Pack - $50.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #2 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #2: Review Jeans Size Large L Embroidered Floral Bird Bootcut Y2K Distressed Denim - $40.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #3 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #3: The Best of the Doors (CD, 2-Disc Set) 1985 Asylum / Elektra Records) - $7.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #4 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #4: Kotobukiya 1/8 Asuka Langley Casual Clothes Ver Figure Evangelion 2007 PP-139 - $125.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #5 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #5: Tori Amos – Little Earthquakes CD (1992, Atlantic) – Original Release - $6.25
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #6 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #6: 100W MARBERO Solar Generator Portable Power Station New Never Opened - $120.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #7 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #7: The Haunted Mansion (Nintendo GameCube, 2003) - Complete w/ Manual - Untested - $25.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #8 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #8: Vintage Cottagecore Y2K Pink Cardigan – Petite Sophisticate – Size Small - $25.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #9 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #9: Handmade Corn Spoon Ring International Silver - $25.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #10 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #10: Vintage Georgy White Fishnet Mesh Button-Up Blouse 70s Style – Size Medium - $15.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #11 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #11: Live Bullet by Bob Seger & The Silver Bullet Band - rock - Music Audio cd - $9.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #12 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #12: Robotech: Battlecry (Nintendo GameCube, 2002) CIB w/ Manual - Disc Untested - $20.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #13 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #13: Handmade Vintage Silver Spoon Ring Size 8 – Unique Upcycled Flatware Jewelry - $29.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #14 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #14: Vintage 90s Serge Seymour "Hot Nights" Tank Top – Etchingz USA - Size M - $40.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #15 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #15: Led Zeppelin II CD Album (Atlantic Records) Classic Rock Remaster – Untested - $11.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #16 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #16: Led Zeppelin – Led Zeppelin III CD Album Classic Rock – Untested - $11.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #17 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #17: Elton John  Madman Across The Water  CD  "The Classic Years" Reissue  NM - $7.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #18 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #18: Elton John – Honky Château CD (The Classic Years) Rocket/Mercury – Untested - $9.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #19 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #19: Eagles – Hotel California CD (Remastered) – Sealed w/ Plastic – Never Opened - $9.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #20 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #20: Devil's Got a New Disguise: the Very Best of Aerosmith by Aerosmith (CD, 2006) - $11.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #21 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #21: Vintage Canvas Messenger Shoulder Bag – Forest Green with Tan Trim - $15.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #22 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #22: Lorde – Pure Heroine CD Album (2013) Universal Republic – Untested - $9.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #23 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #23: Vintage Richmark Floral Tapestry Shoulder Bag – Made in USA - $25.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #24 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #24: Cottagecore Cable Knit Cardigan Sweater Cream Button-Up Front - Size L - $20.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #25 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #25: Antec VP450 450 Watt Power Supply (ATX 12V v2.30) - $40.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #26 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #26: Willie Nelson – Stardust CD Album Classic Country Best Value – Untested - $9.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #27 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #27: Vintage Bone China Miniature Dog Figurine Japan - $14.99
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #28 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #28: Joni Mitchell – Court and Spark CD Album (Asylum Records) Untested USA Pressing - $11.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #29 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #29: Rotel RX-1010 Vintage AM/FM Stereo Receiver - Untested - For Parts or Repair - $90.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #30 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #30: How Can You Be In Two Places At Once... by Firesign Theatre (Jul-1995, Columbia) - $11.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #31 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #31: Bruce Cockburn – Dancing in the Dragon’s Jaws CD Folk Rock – Untested - $9.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #32 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #32: Tim McGraw JBL On-ear Headphones - $40.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #33 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #33: Levi's 505 Women's Cotton Jeans, Size 34x30, Light Blue - $15.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #34 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #34: Vintage Black Slip Cami Tank – Flowy 90s Nylon Blend – Medium - $12.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #35 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #35: The Very Best of Deep Purple CD (Warner Archives 2000) Classic Rock Untested - $11.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #36 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #36: Bat Out of Hell [Special Edition] by Meat Loaf (CD, Oct-2006, 2 Discs) - $11.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #37 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #37: Lego Star Wars III -  The Clone Wars, Windows PC Game, DVD [2011] - $9.99
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #38 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #38: SimCity 2000 CD-ROM (1995) Classic PC Game by Maxis – City Building Simulation - $14.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #39 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #39: Vintage Talbots Black Stretch Blazer Jacket Women’s - Size 4 - $18.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #40 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #40: Outlaw Golf (Nintendo GameCube, 2002) CIB Complete with Manual - Untested - $20.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #41 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #41: Faded Glory Black Faux Leather Pants XS Y2K High Rise Skinny Rocker Grunge Style - $9.99
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #42 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #42: Aggressive Inline (Nintendo GameCube, 2002) - Complete w/ Manual  - Untested - $14.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #43 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #43: Vintage Bronx Garage Cropped Stripe Tee 90s Y2K Navy White - Size M - $15.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #44 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #44: Sony PlayStation 1 PS1 Console Bundle - For Parts/Repair - See Description!! - $45.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #45 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #45: Hawaiian Tropic Women’s Romper Size P/S Black White Tie Dye Short Sleeve - $15.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #46 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #46: Sgt. Pepper's Lonely Hearts Club Band by The Beatles (CD, Jun-1987, Capitol) - $7.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #47 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #47: Goodbye Yellow Brick Road by Elton John (CD, Oct-1992, Island/Mercury) - $9.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #48 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #48: Catwoman (Nintendo GameCube, 2004) CIB No Manual - EA Games - Untested - $15.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #49 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #49: Pulp Fiction Collector’s Edition 2-Disc DVD Set – Includes Slipcover, Booklet - $14.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #50 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #50: Spider-Man (Nintendo GameCube, 2002) Player’s Choice Edition – Disc & Case - $20.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #51 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #51: Tom Clancy's Rainbow Six Sony PlayStation 1, 1999, Black Label, Complete in Box - $15.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Processing element #52 with selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Adding valid listing #52: Eagles – Hotel California CD Album (Asylum Records) Classic Rock 1976 – Untested - $9.00
-[2025-08-10T08:33:18Z INFO  ebay::app] Successfully scraped 52 listings from HTML using selector: div.su-card-container
-[2025-08-10T08:33:18Z INFO  ebay::app] Successfully scraped 52 active listings
-[2025-08-10T08:33:18Z INFO  ebay::app] Received 52 scraped listings
-[2025-08-10T08:33:18Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336112901372
-[2025-08-10T08:33:26Z INFO  ebay::app] Extracted 3 item specifics
-[2025-08-10T08:33:27Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336001150434
-[2025-08-10T08:33:33Z INFO  ebay::app] Extracted 3 item specifics
-[2025-08-10T08:33:34Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336116523278
-[2025-08-10T08:33:43Z INFO  ebay::app] Extracted 2 item specifics
-[2025-08-10T08:33:44Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336112899744
-[2025-08-10T08:33:50Z INFO  ebay::app] Extracted 3 item specifics
-[2025-08-10T08:33:51Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336107759017
-[2025-08-10T08:34:02Z INFO  ebay::app] Extracted 1 item specifics
-[2025-08-10T08:34:03Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336016797561
-[2025-08-10T08:34:10Z INFO  ebay::app] Extracted 3 item specifics
-[2025-08-10T08:34:11Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336026261520
-[2025-08-10T08:34:21Z INFO  ebay::app] Extracted 1 item specifics
-[2025-08-10T08:34:22Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336005835893
-[2025-08-10T08:34:29Z INFO  ebay::app] Extracted 3 item specifics
-[2025-08-10T08:34:30Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336116901072
-[2025-08-10T08:34:36Z INFO  ebay::app] Extracted 3 item specifics
-[2025-08-10T08:34:37Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336040564169
-[2025-08-10T08:34:47Z INFO  ebay::app] Extracted 2 item specifics
-[2025-08-10T08:34:48Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336107954010
-[2025-08-10T08:34:56Z INFO  ebay::app] Extracted 2 item specifics
-[2025-08-10T08:34:57Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336025969826
-[2025-08-10T08:35:08Z INFO  ebay::app] Extracted 1 item specifics
-[2025-08-10T08:35:09Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336108054171
-[2025-08-10T08:35:15Z INFO  ebay::app] Extracted 3 item specifics
-[2025-08-10T08:35:16Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336015352366
-[2025-08-10T08:35:23Z INFO  ebay::app] Extracted 3 item specifics
-[2025-08-10T08:35:24Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336107971718
-[2025-08-10T08:35:32Z INFO  ebay::app] Extracted 2 item specifics
-[2025-08-10T08:35:33Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336107965604
-[2025-08-10T08:35:42Z INFO  ebay::app] Extracted 2 item specifics
-[2025-08-10T08:35:43Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336107973892
-[2025-08-10T08:35:51Z INFO  ebay::app] Extracted 2 item specifics
-[2025-08-10T08:35:52Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336107981149
-[2025-08-10T08:36:03Z INFO  ebay::app] Extracted 1 item specifics
-[2025-08-10T08:36:04Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336107784311
-[2025-08-10T08:36:15Z INFO  ebay::app] Extracted 1 item specifics
-[2025-08-10T08:36:16Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336107712576
-[2025-08-10T08:36:26Z INFO  ebay::app] Extracted 1 item specifics
-[2025-08-10T08:36:27Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336016818444
-[2025-08-10T08:36:36Z INFO  ebay::app] Extracted 2 item specifics
-[2025-08-10T08:36:37Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336107870921
-[2025-08-10T08:36:47Z INFO  ebay::app] Extracted 1 item specifics
-[2025-08-10T08:36:48Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336016832738
-[2025-08-10T08:36:57Z INFO  ebay::app] Extracted 2 item specifics
-[2025-08-10T08:36:58Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336001160303
-[2025-08-10T08:37:05Z INFO  ebay::app] Extracted 3 item specifics
-[2025-08-10T08:37:06Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/335930234676
-[2025-08-10T08:37:10Z INFO  ebay::app] Extracted 4 item specifics
-[2025-08-10T08:37:11Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336107947863
-[2025-08-10T08:37:22Z INFO  ebay::app] Extracted 1 item specifics
-[2025-08-10T08:37:23Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/335946885779
-[2025-08-10T08:37:34Z INFO  ebay::app] Extracted 1 item specifics
-[2025-08-10T08:37:35Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336107883015
-[2025-08-10T08:37:43Z INFO  ebay::app] Extracted 2 item specifics
-[2025-08-10T08:37:44Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/335940695042
-[2025-08-10T08:37:50Z INFO  ebay::app] Extracted 3 item specifics
-[2025-08-10T08:37:51Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336107866676
-[2025-08-10T08:38:02Z INFO  ebay::app] Extracted 1 item specifics
-[2025-08-10T08:38:03Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336107917791
-[2025-08-10T08:38:13Z INFO  ebay::app] Extracted 1 item specifics
-[2025-08-10T08:38:14Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/335971104535
-[2025-08-10T08:38:19Z INFO  ebay::app] Extracted 4 item specifics
-[2025-08-10T08:38:20Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336009207430
-[2025-08-10T08:38:24Z INFO  ebay::app] Extracted 4 item specifics
-[2025-08-10T08:38:25Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336015365782
-[2025-08-10T08:38:33Z INFO  ebay::app] Extracted 3 item specifics
-[2025-08-10T08:38:34Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336107902821
-[2025-08-10T08:38:43Z INFO  ebay::app] Extracted 2 item specifics
-[2025-08-10T08:38:44Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336107960979
-[2025-08-10T08:38:54Z INFO  ebay::app] Extracted 1 item specifics
-[2025-08-10T08:38:55Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336112902572
-[2025-08-10T08:39:06Z INFO  ebay::app] Extracted 1 item specifics
-[2025-08-10T08:39:07Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336107683127
-[2025-08-10T08:39:18Z INFO  ebay::app] Extracted 1 item specifics
-[2025-08-10T08:39:19Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336041640181
-[2025-08-10T08:39:25Z INFO  ebay::app] Extracted 3 item specifics
-[2025-08-10T08:39:26Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336025961685
-[2025-08-10T08:39:37Z INFO  ebay::app] Extracted 1 item specifics
-[2025-08-10T08:39:38Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336001041976
-[2025-08-10T08:39:44Z INFO  ebay::app] Extracted 3 item specifics
-[2025-08-10T08:39:45Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336026276980
-[2025-08-10T08:39:56Z INFO  ebay::app] Extracted 1 item specifics
-[2025-08-10T08:39:57Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336001135201
-[2025-08-10T08:40:04Z INFO  ebay::app] Extracted 3 item specifics
-[2025-08-10T08:40:05Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336026326014
-[2025-08-10T08:40:09Z INFO  ebay::app] Extracted 4 item specifics
-[2025-08-10T08:40:10Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336009232735
-[2025-08-10T08:40:18Z INFO  ebay::app] Extracted 3 item specifics
-[2025-08-10T08:40:19Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336108029970
-[2025-08-10T08:40:29Z INFO  ebay::app] Extracted 1 item specifics
-[2025-08-10T08:40:30Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336107939985
-[2025-08-10T08:40:39Z INFO  ebay::app] Extracted 2 item specifics
-[2025-08-10T08:40:40Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336025675059
-[2025-08-10T08:40:51Z INFO  ebay::app] Extracted 1 item specifics
-[2025-08-10T08:40:52Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336108063654
-[2025-08-10T08:41:07Z INFO  ebay::app] Extracted 0 item specifics
-[2025-08-10T08:41:08Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336023879329
-[2025-08-10T08:41:23Z INFO  ebay::app] Extracted 0 item specifics
-[2025-08-10T08:41:24Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336023850221
-[2025-08-10T08:41:39Z INFO  ebay::app] Extracted 0 item specifics
-[2025-08-10T08:41:40Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336107956631
-[2025-08-10T08:41:54Z INFO  ebay::app] Extracted 0 item specifics
-[2025-08-10T08:41:55Z INFO  ebay::app] Received 52 enriched listings
-[2025-08-10T08:41:55Z INFO  ebay::app] Successfully saved 52 listings to ebay_listings_20250810_084155.csv
-[2025-08-10T08:41:55Z INFO  ebay::app] Successfully saved 52 listings to ebay_listings_20250810_084155.csv
-[2025-08-10T08:42:42Z INFO  ebay::app] Quitting fantoccini client
-[2025-08-10T08:42:43Z INFO  ebay::app] Killing geckodriver
-[2025-08-10T08:42:43Z INFO  ebay] Shutting down
+[2025-08-15T18:25:17Z INFO  ebay] Starting up
+[2025-08-15T18:25:17Z INFO  ebay::app] Starting geckodriver
+[2025-08-15T18:25:17Z INFO  ebay::app] Connecting to webdriver
+[2025-08-15T18:25:22Z INFO  ebay::app] Webdriver client connected
+[2025-08-15T18:25:24Z INFO  ebay::app] Navigating to https://www.ebay.com/usr/thriftngo5
+[2025-08-15T18:25:32Z INFO  ebay::app] Navigated to https://www.ebay.com/usr/thriftngo5
+[2025-08-15T18:25:34Z INFO  ebay::app] ✅ CAPTCHA resolved - continuing scraping
+[2025-08-15T18:25:35Z INFO  ebay::app] Attempting to scrape items sold
+[2025-08-15T18:25:35Z INFO  ebay::app] Raw sold items text: 45
+[2025-08-15T18:25:35Z INFO  ebay::app] Received items sold count: 45
+[2025-08-15T18:25:35Z INFO  ebay::app] Attempting to scrape feedback
+[2025-08-15T18:25:35Z INFO  ebay::app] Feedback text: 95.7% positive feedback (21)
+[2025-08-15T18:25:35Z INFO  ebay::app] Received feedback text: 95.7% positive feedback (21)
+[2025-08-15T18:25:36Z INFO  ebay::app] Attempting to scrape follower count
+[2025-08-15T18:25:36Z INFO  ebay::app] Raw follower text: 1 follower
+[2025-08-15T18:25:36Z INFO  ebay::app] Received follower count: 1
+[2025-08-15T18:25:36Z INFO  ebay::app] Attempting to click the 'see all' button
+[2025-08-15T18:25:38Z INFO  ebay::app] 'See all' button clicked successfully
+[2025-08-15T18:25:39Z INFO  ebay::app] Starting to scrape active listings from current page
+[2025-08-15T18:25:47Z INFO  ebay::app] Found elements with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Found 56 listings using selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #1 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #1: Shop on eBay - $20.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #2 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #2: Shop on eBay - $20.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #3 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #3: Review Jeans Size Large L Embroidered Floral Bird Bootcut Y2K Distressed Denim - $40.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #4 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #4: Lorde – Pure Heroine CD Album (2013) Universal Republic – Untested - $7.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #5 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #5: Kotobukiya 1/8 Asuka Langley Casual Clothes Ver Figure Evangelion 2007 PP-139 - $115.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #6 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #6: The Best of the Doors (CD, 2-Disc Set) 1985 Asylum / Elektra Records) - $7.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #7 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #7: Bruce Cockburn – Dancing in the Dragon’s Jaws CD Folk Rock – Untested - $7.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #8 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #8: Levi's 505 Women's Cotton Jeans, Size 34x30, Light Blue - $15.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #9 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #9: Vintage Georgy White Fishnet Mesh Button-Up Blouse 70s Style – Size Medium - $15.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #10 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #10: 100W MARBERO Solar Generator Portable Power Station New Never Opened - $120.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #11 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #11: Led Zeppelin II CD Album (Atlantic Records) Classic Rock Remaster – Untested - $9.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #12 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #12: The Haunted Mansion (Nintendo GameCube, 2003) - Complete w/ Manual - Untested - $25.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #13 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #13: Elton John  Madman Across The Water  CD  "The Classic Years" Reissue  NM - $7.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #14 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #14: Tori Amos – Little Earthquakes CD (1992, Atlantic) – Original Release - $4.25
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #15 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #15: Robotech: Battlecry (Nintendo GameCube, 2002) CIB w/ Manual - Disc Untested - $20.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #16 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #16: Vintage 90s Serge Seymour "Hot Nights" Tank Top – Etchingz USA - Size M - $40.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #17 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #17: Live Bullet by Bob Seger & The Silver Bullet Band - rock - Music Audio cd - $7.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #18 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #18: Vintage Richmark Floral Tapestry Shoulder Bag – Made in USA - $25.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #19 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #19: Women's Liz Claiborne Chandelier Pink Mix Earrings - $20.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #20 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #20: Rotel RX-1010 Vintage AM/FM Stereo Receiver - Untested - For Parts or Repair - $90.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #21 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #21: Vintage Gold-Tone Fan Shaped Pendant Necklace – Art Deco Style - $25.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #22 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #22: Vintage Sarah Coventry Rhinestone Brushed Silver Tone Clip on Earrings - $15.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #23 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #23: Handmade Vintage Silver Spoon Ring Size 8 – Unique Upcycled Flatware Jewelry - $27.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #24 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #24: Vintage Talbots Black Stretch Blazer Jacket Women’s - Size 4 - $18.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #25 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #25: White Album by Beatles (CD, 2009) - $24.99
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #26 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #26: Sony PlayStation 1 PS1 Console Bundle - For Parts/Repair - See Description!! - $45.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #27 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #27: Vintage Canvas Messenger Shoulder Bag – Forest Green with Tan Trim - $15.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #28 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #28: Vintage Cottagecore Y2K Pink Cardigan – Petite Sophisticate – Size Small - $25.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #29 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #29: Elton John – Honky Château CD (The Classic Years) Rocket/Mercury – Untested - $7.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #30 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #30: Devil's Got a New Disguise: the Very Best of Aerosmith by Aerosmith (CD, 2006) - $9.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #31 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #31: Lego Star Wars III -  The Clone Wars, Windows PC Game, DVD [2011] - $9.99
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #32 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #32: Sgt. Pepper's Lonely Hearts Club Band by The Beatles (CD, Jun-1987, Capitol) - $5.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #33 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #33: Tim McGraw JBL On-ear Headphones - $40.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #34 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #34: Willie Nelson – Stardust CD Album Classic Country Best Value – Untested - $7.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #35 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #35: How Can You Be In Two Places At Once... by Firesign Theatre (Jul-1995, Columbia) - $9.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #36 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #36: Antec VP450 450 Watt Power Supply (ATX 12V v2.30) - $40.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #37 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #37: Vintage Bone China Miniature Dog Figurine Japan - $14.99
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #38 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #38: Vintage Bronx Garage Cropped Stripe Tee 90s Y2K Navy White - Size M - $15.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #39 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #39: Cottagecore Cable Knit Cardigan Sweater Cream Button-Up Front - Size L - $20.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #40 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #40: Handmade Corn Spoon Ring International Silver - $24.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #41 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #41: Eagles – Hotel California CD (Remastered) – Sealed w/ Plastic – Never Opened - $7.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #42 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #42: Joni Mitchell – Court and Spark CD Album (Asylum Records) Untested USA Pressing - $9.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #43 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #43: Vintage Black Slip Cami Tank – Flowy 90s Nylon Blend – Medium - $12.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #44 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #44: Outlaw Golf (Nintendo GameCube, 2002) CIB Complete with Manual - Untested - $20.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #45 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #45: SimCity 2000 CD-ROM (1995) Classic PC Game by Maxis – City Building Simulation - $12.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #46 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #46: Aggressive Inline (Nintendo GameCube, 2002) - Complete w/ Manual  - Untested - $14.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #47 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #47: Faded Glory Black Faux Leather Pants XS Y2K High Rise Skinny Rocker Grunge Style - $9.99
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #48 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #48: Bat Out of Hell [Special Edition] by Meat Loaf (CD, Oct-2006, 2 Discs) - $9.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #49 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #49: The Very Best of Deep Purple CD (Warner Archives 2000) Classic Rock Untested - $9.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #50 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #50: Hawaiian Tropic Women’s Romper Size P/S Black White Tie Dye Short Sleeve - $15.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #51 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #51: Goodbye Yellow Brick Road by Elton John (CD, Oct-1992, Island/Mercury) - $7.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #52 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #52: Catwoman (Nintendo GameCube, 2004) CIB No Manual - EA Games - Untested - $15.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #53 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #53: Spider-Man (Nintendo GameCube, 2002) Player’s Choice Edition – Disc & Case - $20.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #54 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #54: Pulp Fiction Collector’s Edition 2-Disc DVD Set – Includes Slipcover, Booklet - $12.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #55 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #55: Tom Clancy's Rainbow Six Sony PlayStation 1, 1999, Black Label, Complete in Box - $15.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Processing element #56 with selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Adding valid listing #56: Eagles – Hotel California CD Album (Asylum Records) Classic Rock 1976 – Untested - $7.00
+[2025-08-15T18:25:48Z INFO  ebay::app] Successfully scraped 56 listings from HTML using selector: div.s-item__wrapper
+[2025-08-15T18:25:48Z INFO  ebay::app] Successfully scraped 56 active listings
+[2025-08-15T18:25:48Z INFO  ebay::app] Received 56 scraped listings
+[2025-08-15T18:25:48Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/123456
+[2025-08-15T18:26:03Z INFO  ebay::app] Extracted 0 item specifics
+[2025-08-15T18:26:04Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/123456
+[2025-08-15T18:26:19Z INFO  ebay::app] Extracted 0 item specifics
+[2025-08-15T18:26:20Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336001150434
+[2025-08-15T18:26:28Z INFO  ebay::app] Extracted 3 item specifics
+[2025-08-15T18:26:29Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336107870921
+[2025-08-15T18:26:41Z INFO  ebay::app] Extracted 1 item specifics
+[2025-08-15T18:26:41Z INFO  ebay::app] Quitting fantoccini client
+[2025-08-15T18:26:42Z INFO  ebay::app] Scraping item details from: https://www.ebay.com/itm/336112899744
+[2025-08-15T18:26:42Z INFO  ebay::app] Killing geckodriver
+[2025-08-15T18:26:42Z INFO  ebay] Shutting down

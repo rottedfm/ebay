@@ -10,6 +10,37 @@ use serde::{Deserialize, Serialize};
 use std::process::{Child, Command};
 use chrono::Utc;
 
+#[derive(Debug, Default, Clone)]
+pub struct ScrollState {
+    pub vertical_scroll: usize,
+}
+
+impl ScrollState {
+    pub fn scroll_down(&mut self) {
+        self.vertical_scroll += 1;
+    }
+    
+    pub fn scroll_up(&mut self) {
+        self.vertical_scroll = self.vertical_scroll.saturating_sub(1);
+    }
+    
+    pub fn scroll_page_down(&mut self) {
+        self.vertical_scroll += 10;
+    }
+    
+    pub fn scroll_page_up(&mut self) {
+        self.vertical_scroll = self.vertical_scroll.saturating_sub(10);
+    }
+    
+    pub fn scroll_to_top(&mut self) {
+        self.vertical_scroll = 0;
+    }
+    
+    pub fn scroll_to_bottom(&mut self) {
+        self.vertical_scroll = 1000; // Large value to scroll to bottom
+    }
+}
+
 /// Represents an eBay listing with all relevant information for CSV export.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Listing {
@@ -83,6 +114,16 @@ pub enum AppState {
     Running,
 }
 
+/// Represents the current view mode of the scrollview widget.
+#[derive(Debug, Default, PartialEq, Eq, Clone)]
+pub enum ScrollViewMode {
+    /// Display paragraph view with seller stats and info.
+    #[default]
+    Paragraph,
+    /// Display table view with listings.
+    Table,
+}
+
 /// Main application structure managing the eBay scraper state and WebDriver interactions.
 #[derive(Debug)]
 pub struct App {
@@ -112,6 +153,18 @@ pub struct App {
     pub waiting_for_user_input: bool,
     /// Scraped eBay listings.
     pub listings: Vec<Listing>,
+    /// Selected listing index for table navigation
+    pub selected_listing_index: usize,
+    /// Scroll offset for table display
+    pub scroll_offset: usize,
+    /// Current scrollview mode (paragraph or table)
+    pub scroll_view_mode: ScrollViewMode,
+    /// Scroll offset for paragraph view
+    pub paragraph_scroll_offset: usize,
+    /// ScrollState for the main scrollview widget
+    pub scroll_view_state: ScrollState,
+    /// Whether the user has locked to a specific section (true = locked)
+    pub section_locked: bool,
 }
 
 impl Default for App {
@@ -130,6 +183,12 @@ impl Default for App {
             captcha_detected: false,
             waiting_for_user_input: false,
             listings: Vec::new(),
+            selected_listing_index: 0,
+            scroll_offset: 0,
+            scroll_view_mode: ScrollViewMode::default(),
+            paragraph_scroll_offset: 0,
+            scroll_view_state: ScrollState::default(),
+            section_locked: false,
         }
     }
 }
@@ -332,6 +391,9 @@ impl App {
                     }
                     AppEvent::ScrapeListings(listings) => {
                         self.listings = listings.clone();
+                        // Reset selection to first item when new listings are loaded
+                        self.selected_listing_index = 0;
+                        self.scroll_offset = 0;
                         info!("Received {} scraped listings", listings.len());
                         
                         // Trigger enrichment of listings
@@ -380,6 +442,16 @@ impl App {
                     }
                     AppEvent::EnrichedListings(listings) => {
                         self.listings = listings.clone();
+                        // Ensure selection is still valid
+                        if self.selected_listing_index >= self.listings.len() && !self.listings.is_empty() {
+                            self.selected_listing_index = self.listings.len() - 1;
+                            // Adjust scroll offset accordingly
+                            self.scroll_offset = if self.selected_listing_index >= 19 {
+                                self.selected_listing_index - 19
+                            } else {
+                                0
+                            };
+                        }
                         info!("Received {} enriched listings", listings.len());
                         
                         let filename = format!("ebay_listings_{}.csv", 
@@ -423,7 +495,177 @@ impl App {
             KeyCode::Char('c' | 'C') if key_event.modifiers == KeyModifiers::CONTROL => {
                 self.events.send(AppEvent::Quit)
             }
-            // Other handlers you could add here.
+            KeyCode::Enter => {
+                if self.section_locked {
+                    // If locked, unlock and allow normal scrolling
+                    self.section_locked = false;
+                } else {
+                    // Lock to current section
+                    self.section_locked = true;
+                }
+            }
+            KeyCode::Down | KeyCode::Char('j') => {
+                if self.section_locked {
+                    // If locked to a section, handle navigation within that section
+                    match self.scroll_view_mode {
+                        ScrollViewMode::Paragraph => {
+                            // Scroll down in paragraph view
+                            self.paragraph_scroll_offset += 1;
+                        }
+                        ScrollViewMode::Table => {
+                            // Navigate table rows
+                            if !self.listings.is_empty() && self.selected_listing_index < self.listings.len() - 1 {
+                                self.selected_listing_index += 1;
+                                // Keep selection visible - scroll down if needed
+                                let visible_rows = 25; // Max visible rows
+                                if self.selected_listing_index >= self.scroll_offset + visible_rows {
+                                    self.scroll_offset = self.selected_listing_index - visible_rows + 1;
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    // If not locked, scroll the entire scrollview
+                    self.scroll_view_state.scroll_down();
+                }
+            }
+            KeyCode::Up | KeyCode::Char('k') => {
+                if self.section_locked {
+                    // If locked to a section, handle navigation within that section
+                    match self.scroll_view_mode {
+                        ScrollViewMode::Paragraph => {
+                            // Scroll up in paragraph view
+                            self.paragraph_scroll_offset = self.paragraph_scroll_offset.saturating_sub(1);
+                        }
+                        ScrollViewMode::Table => {
+                            // Navigate table rows
+                            if self.selected_listing_index > 0 {
+                                self.selected_listing_index -= 1;
+                                // Keep selection visible - scroll up if needed
+                                if self.selected_listing_index < self.scroll_offset {
+                                    self.scroll_offset = self.selected_listing_index;
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    // If not locked, scroll the entire scrollview
+                    self.scroll_view_state.scroll_up();
+                }
+            }
+            KeyCode::PageDown => {
+                if self.section_locked {
+                    match self.scroll_view_mode {
+                        ScrollViewMode::Paragraph => {
+                            // Page down in paragraph view
+                            self.paragraph_scroll_offset += 10;
+                        }
+                        ScrollViewMode::Table => {
+                            if !self.listings.is_empty() {
+                                let visible_rows = 25;
+                                let new_selected = std::cmp::min(
+                                    self.selected_listing_index + visible_rows,
+                                    self.listings.len() - 1
+                                );
+                                self.selected_listing_index = new_selected;
+                                
+                                // Adjust scroll to keep selection visible
+                                if self.selected_listing_index >= self.scroll_offset + visible_rows {
+                                    self.scroll_offset = self.selected_listing_index - visible_rows + 1;
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    self.scroll_view_state.scroll_page_down();
+                }
+            }
+            KeyCode::PageUp => {
+                if self.section_locked {
+                    match self.scroll_view_mode {
+                        ScrollViewMode::Paragraph => {
+                            // Page up in paragraph view
+                            self.paragraph_scroll_offset = self.paragraph_scroll_offset.saturating_sub(10);
+                        }
+                        ScrollViewMode::Table => {
+                            if !self.listings.is_empty() {
+                                let visible_rows = 25;
+                                let new_selected = self.selected_listing_index.saturating_sub(visible_rows);
+                                self.selected_listing_index = new_selected;
+                                
+                                // Adjust scroll to keep selection visible
+                                if self.selected_listing_index < self.scroll_offset {
+                                    self.scroll_offset = self.selected_listing_index;
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    self.scroll_view_state.scroll_page_up();
+                }
+            }
+            KeyCode::Home => {
+                if self.section_locked {
+                    match self.scroll_view_mode {
+                        ScrollViewMode::Paragraph => {
+                            // Go to top of paragraph
+                            self.paragraph_scroll_offset = 0;
+                        }
+                        ScrollViewMode::Table => {
+                            if !self.listings.is_empty() {
+                                self.selected_listing_index = 0;
+                                self.scroll_offset = 0;
+                            }
+                        }
+                    }
+                } else {
+                    self.scroll_view_state.scroll_to_top();
+                }
+            }
+            KeyCode::End => {
+                if self.section_locked {
+                    match self.scroll_view_mode {
+                        ScrollViewMode::Paragraph => {
+                            // Go to bottom of paragraph (approximate)
+                            self.paragraph_scroll_offset = 50; // Adjust based on content
+                        }
+                        ScrollViewMode::Table => {
+                            if !self.listings.is_empty() {
+                                self.selected_listing_index = self.listings.len() - 1;
+                                let visible_rows = 25;
+                                self.scroll_offset = if self.listings.len() > visible_rows {
+                                    self.listings.len() - visible_rows
+                                } else {
+                                    0
+                                };
+                            }
+                        }
+                    }
+                } else {
+                    self.scroll_view_state.scroll_to_bottom();
+                }
+            }
+            KeyCode::Char('i') => {
+                // Only works in table mode
+                if self.scroll_view_mode == ScrollViewMode::Table &&
+                   !self.listings.is_empty() && 
+                   self.selected_listing_index < self.listings.len() {
+                    if let Some(url) = &self.listings[self.selected_listing_index].url {
+                        let _ = std::process::Command::new("firefox")
+                            .arg(url)
+                            .spawn();
+                    }
+                }
+            }
+            KeyCode::Tab => {
+                // Switch between sections (only when not locked)
+                if !self.section_locked {
+                    match self.scroll_view_mode {
+                        ScrollViewMode::Paragraph => self.scroll_view_mode = ScrollViewMode::Table,
+                        ScrollViewMode::Table => self.scroll_view_mode = ScrollViewMode::Paragraph,
+                    }
+                }
+            }
             _ => {}
         }
         Ok(())
